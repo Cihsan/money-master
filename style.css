@@ -1,0 +1,30 @@
+.heading {
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e0d7d59d;
+    padding: 50px;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: auto;
+    }
+}
