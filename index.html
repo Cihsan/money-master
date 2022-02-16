@@ -21,21 +21,32 @@
         </div>
         <div class="flex">
             <h2>Income</h2>
-            <label for="">Income: <input type="number" value="0"></label>
+            <label for="">Income: <input id="income" type="number" value="0"></label>
             <h2>Expenses</h2>
-            <label for=""> Food: <input type="number" value="0"></label>
-            <label for=""> Rent: <input type="number" value="0"></label>
-            <label for=""> Etc: <input type="number" value="0"></label>
-            <button>Calculate</button>
-            <h3>Total Expenses: <span>0</span></h3>
-            <h3>Balance: <span>0</span></h3>
-            <label for="">Save: <input type="number" value="0">%</label>
-            <button>Save</button>
-            <h3>Saving Amount:<span>0</span></h3>
-            <h3>Remaining Balance:<span>0</span></h3>
+            <label for="">Food: <input id="food" type="number" value="0"></label>
+            <label for="">Rent: <input id="rent" type="number" value="0"></label>
+            <label for="">Etc. : <input id="etc" type="number" value="0"></label>
+            <button id="calculate">Calculate</button>
+            <h3>Total Expenses: <span id="totalExpense">0</span></h3>
+            <h3>Balance: <span id="balance">0</span></h3>
+            <label for="">Save: <input id="saveParcent" type="number" value="0">%</label>
+            <button id="">Save</button>
+            <h3>Saving Amount:<span id="savingAmount">0</span></h3>
+            <h3>Remaining Balance:<span id="remaineBalance">0</span></h3>
         </div>
     </section>
 </main>
+<script>
+    document.getElementById('calculate').addEventListener('click', function () {
+        document.getElementById('income')
+        document.getElementById('food')
+        document.getElementById('rent')
+        document.getElementById('etc')
+        document.getElementById('totalExpense')
+        document.getElementById('balance')
+
+    })
+</script>
 
 <body>
 
