@@ -7,23 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Money Expense</title>
     <style>
-        section {
+        .grid {
             display: grid;
             grid-template-columns: auto auto;
-            justify-content: space-between;
+            justify-content: space-around
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
         }
     </style>
 </head>
-<header>
+<header class="container">
     <h1>My Money Expense</h1>
 </header>
-<main>
-    <section>
+<main class="container">
+    <section class="grid">
         <div class="image">
             <img src="./images/01.jpg" alt="" width="100%">
         </div>
-        <div>
-
+        <div class="flex">
+            <h2>Income</h2>
+            <label for="">Income: <input type="number" value="0"></label>
+            <h2>Expenses</h2>
+            <label for="">Food: <input type="number" value="0"></label>
+            <label for="">Rent: <input type="number" value="0"></label>
+            <label for="">Etc: <input type="number" value="0"></label>
+            <button>Calculate</button>
+            <h3>Total Expenses: <span>0</span></h3>
+            <h3>Balance: <span>0</span></h3>
+            <label for="">Save: <input type="number" value="0">%</label>
+            <button>Save</button>
+            <h3>Saving Amount:<span>0</span></h3>
+            <h3>Remaining Balance:<span>0</span></h3>
         </div>
     </section>
 </main>
