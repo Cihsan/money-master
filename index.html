@@ -29,10 +29,10 @@
             <button id="calculate">Calculate</button>
             <h3>Total Expenses: <span id="totalExpense">0</span></h3>
             <h3>Balance: <span id="balance">0</span></h3>
-            <label for="">Save: <input id="savePercent" type="number" value="0"></label>
+            <label for="">Save: <input id="savePercent" type="number" value="0">%</label>
             <button id="save">Save</button>
-            <h3>Saving Amount:<span id="savingAmount">0</span></h3>
-            <h3>Remaining Balance:<span id="remaineBalance">0</span></h3>
+            <h3>Saving Amount: <span id="savingAmount">0</span></h3>
+            <h3>Remaining Balance: <span id="remaineBalance">0</span></h3>
         </div>
     </section>
 </main>
@@ -67,12 +67,13 @@
         let getPercent = (incomeConvert * savePercentConvert) / 100
         //saving amount
         let savingAmount = document.getElementById('savingAmount')
-        let savingAmountConvert = parseInt(savingAmount.value)
+        let savingAmountConvert = parseInt(savingAmount.innerText)
         savingAmount.innerText = getPercent
         console.log(savePercentConvert)
         let remaineBalance = document.getElementById('remaineBalance')
         let remaineBalanceConvert = parseInt(remaineBalance.innerText)
-
+        let remain = incomeConvert - getPercent
+        remaineBalance.innerText = remain;
     })
 </script>
 
