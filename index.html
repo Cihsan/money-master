@@ -21,16 +21,16 @@
         </div>
         <div class="flex">
             <h2>Income</h2>
-            <label for="">Income: <input id="income" type="number" value=""></label>
+            <label for="">Income: <input id="income" type="number" value="0"></label>
             <h2>Expenses</h2>
-            <label for="">Food: <input id="food" type="number" value=""></label>
-            <label for="">Rent: <input id="rent" type="number" value=""></label>
-            <label for="">Etc. : <input id="etc" type="number" value=""></label>
+            <label for="">Food: <input id="food" type="number" value="0"></label>
+            <label for="">Rent: <input id="rent" type="number" value="0"></label>
+            <label for="">Etc. : <input id="etc" type="number" value="0"></label>
             <button id="calculate">Calculate</button>
             <h3>Total Expenses: <span id="totalExpense">0</span></h3>
             <h3>Balance: <span id="balance">0</span></h3>
-            <label for="">Save: <input id="saveParcent" type="number" value="">%</label>
-            <button id="">Save</button>
+            <label for="">Save: <input id="savePercent" type="number" value="0"></label>
+            <button id="save">Save</button>
             <h3>Saving Amount:<span id="savingAmount">0</span></h3>
             <h3>Remaining Balance:<span id="remaineBalance">0</span></h3>
         </div>
@@ -56,7 +56,23 @@
         let balanceConvert = parseInt(balance.innerText)
         let expenseAfter = incomeConvert - expense
         balance.innerText = expenseAfter
-        console.log('click')
+
+    })
+
+    document.getElementById('save').addEventListener('click', function () {
+        let income = document.getElementById('income')
+        let incomeConvert = parseInt(income.value)
+        let savePercent = document.getElementById('savePercent')
+        let savePercentConvert = parseInt(savePercent.value)
+        let getPercent = (incomeConvert * savePercentConvert) / 100
+        //saving amount
+        let savingAmount = document.getElementById('savingAmount')
+        let savingAmountConvert = parseInt(savingAmount.value)
+        savingAmount.innerText = getPercent
+        console.log(savePercentConvert)
+        let remaineBalance = document.getElementById('remaineBalance')
+        let remaineBalanceConvert = parseInt(remaineBalance.innerText)
+
     })
 </script>
 
