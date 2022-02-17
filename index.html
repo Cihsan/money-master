@@ -13,28 +13,45 @@
     </style>
 </head>
 <header class="container">
+    <!-- Heading part -->
     <h1 class="heading">My Money Expense</h1>
 </header>
 <main class="container">
     <section class="grid">
+        <!-- Image part -->
+
         <div class="image">
             <img src="./images/01.jpg" alt="" width="100%">
         </div>
+
+        <!--Expenses And Income -->
+
         <div class="flex">
             <h2>Income</h2>
+
+            <!--input Income -->
+
             <label for="">Income: <input id="income" type="number" min="0" value="0" required></label>
             <h2>Expenses</h2>
+
+            <!--input all Expenses -->
+
             <label for="">Food: <input id="food" type="number" min="0" value="0"></label>
             <label for="">Rent: <input id="rent" type="number" min="0" value="0"></label>
             <label for="">Etc. : <input id="etc" type="number" min="0" value="0"></label>
             <small id="warnningOne">Negetive Number Unacceptable !!!</small>
             <small id="warnningTwo">Expense More than Income !!!</small>
-            <!-- 2.Please Give Expense less than Income -->
+
+            <!--Calculation Button -->
+
             <button id="calculate">Calculate</button>
+
             <h3>Total Expenses: <span id="totalExpense">0</span></h3>
             <h3>Balance: <span id="balance">0</span></h3>
+
             <label for="">Save: <input id="savePercent" type="number" min="0" value="0" required>%</label>
             <small id="warnningThree">Insufficient Balance</small>
+            <!--Saving Amount Button -->
             <button id="save">Save</button>
             <h3>Saving Amount: <span id="savingAmount">0</span></h3>
             <h3>Remaining Balance: <span id="remainBalance">0</span></h3>

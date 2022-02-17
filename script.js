@@ -1,3 +1,4 @@
+// 
 function parseDotValue(idv) {
     let idnamev = document.getElementById(idv)
     let idnameConvert = parseInt(idnamev.value)
@@ -38,13 +39,6 @@ document.getElementById('calculate').addEventListener('click', function () {
         document.getElementById('warnningTwo').style.display = 'block';
     }
 
-    //Validation Done For Expense more than Income
-    /*  if (getIncome > 0 && getFood > 0 && getRent > 0 && getEtc > 0) {
-         document.getElementById('warnningOne').style.display = 'none'
-     }
-     else if (expenseTotal < balanceTotal) {
-         document.getElementById('warnningTwo').style.display = 'none';
-     } */
 })
 
 document.getElementById('save').addEventListener('click', function () {
