@@ -15,8 +15,6 @@ document.getElementById('calculate').addEventListener('click', function () {
     let getRent = parseDotValue('rent');
     let getEtc = parseDotValue('etc');
     let expenseTotal = getFood + getRent + getEtc;
-    let showTotal = parseDotInner('totalExpense');
-    let getBalance = parseDotInner('balance');
     let balanceTotal = getIncome - expenseTotal;
 
     let totalExpense = document.getElementById('totalExpense')
@@ -24,6 +22,7 @@ document.getElementById('calculate').addEventListener('click', function () {
     let balance = document.getElementById('balance')
     balance.innerText = balanceTotal;
 
+    // some not perfect run
     //Validation Done For Negetive value 
     if (getIncome > 0 && getFood > 0 && getRent > 0 && getEtc > 0) {
         document.getElementById('warnningOne').style.display = 'none'
@@ -39,6 +38,13 @@ document.getElementById('calculate').addEventListener('click', function () {
         document.getElementById('warnningTwo').style.display = 'block';
     }
 
+    //Validation Done For Expense more than Income
+    /*  if (getIncome > 0 && getFood > 0 && getRent > 0 && getEtc > 0) {
+         document.getElementById('warnningOne').style.display = 'none'
+     }
+     else if (expenseTotal < balanceTotal) {
+         document.getElementById('warnningTwo').style.display = 'none';
+     } */
 })
 
 document.getElementById('save').addEventListener('click', function () {
@@ -51,7 +57,7 @@ document.getElementById('save').addEventListener('click', function () {
     let showRemainBalance = parseDotInner('remainBalance');
     let getBalance = parseDotInner('balance');
     let remainTotal = getBalance - getPercentTotal;
-
+    //Validation Done For Saving more than Balance Income
     if (getPercentTotal < getBalance) {
         let saveAmountshow = document.getElementById('savingAmount')
         saveAmountshow.innerText = getPercentTotal
