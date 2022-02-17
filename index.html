@@ -26,36 +26,57 @@
             <label for="">Food: <input id="food" type="number" value="0"></label>
             <label for="">Rent: <input id="rent" type="number" value="0"></label>
             <label for="">Etc. : <input id="etc" type="number" value="0"></label>
+            <small id="message">1.Please Give Positve Income<br>2.Please Give Expense less than Income</small>
             <button id="calculate">Calculate</button>
             <h3>Total Expenses: <span id="totalExpense">0</span></h3>
             <h3>Balance: <span id="balance">0</span></h3>
             <label for="">Save: <input id="savePercent" type="number" value="0">%</label>
             <button id="save">Save</button>
             <h3>Saving Amount: <span id="savingAmount">0</span></h3>
-            <h3>Remaining Balance: <span id="remaineBalance">0</span></h3>
+            <h3>Remaining Balance: <span id="remainBalance">0</span></h3>
         </div>
     </section>
 </main>
 <script>
+
+    function parseDotValue(id) {
+        let idname = document.getElementById(id).parseInt().value
+    }
     document.getElementById('calculate').addEventListener('click', function () {
         //all input
-        let income = document.getElementById('income')
-        let incomeConvert = parseInt(income.value)
-        let food = document.getElementById('food')
-        let foodConvert = parseInt(food.value)
-        let rent = document.getElementById('rent')
-        let rentConvert = parseInt(rent.value)
-        let etc = document.getElementById('etc')
-        let etcConvert = parseInt(etc.value)
-        let expense = foodConvert + rentConvert + etcConvert
+        let income = document.getElementById('income');
+        let incomeConvert = parseInt(income.value);
+        //parseAndValue('income')
+        let food = document.getElementById('food');
+        let foodConvert = parseInt(food.value);
+        //parseAndValue('food')
+        let rent = document.getElementById('rent');
+        let rentConvert = parseInt(rent.value);
+        //parseAndValue('rent')
+        let etc = document.getElementById('etc');
+        let etcConvert = parseInt(etc.value);
+        //parseAndValue('etc')
+        let expense = foodConvert + rentConvert + etcConvert;
+
+
+        //let expense = (parseAndValue('food')) + (parseAndValue('rent')) + (parseAndValue('etc'))
         //update here
-        let totalExpense = document.getElementById('totalExpense')
-        let totalExpenseConvert = parseInt(totalExpense.innerText)
-        totalExpense.innerText = expense
+        let totalExpense = document.getElementById('totalExpense');
+        let totalExpenseConvert = parseInt(totalExpense.innerText);
+
+
         let balance = document.getElementById('balance')
-        let balanceConvert = parseInt(balance.innerText)
-        let expenseAfter = incomeConvert - expense
-        balance.innerText = expenseAfter
+        let balanceConvert = parseInt(balance.innerText);
+        let expenseAfter = incomeConvert - expense;
+
+        if (incomeConvert > 0 && expense < expenseAfter) {
+            totalExpense.innerText = expense
+            balance.innerText = expenseAfter
+            document.getElementById('message').style.display = 'none'
+        } else {
+            document.getElementById('message').style.display = 'block'
+
+        }
 
     })
 
@@ -70,10 +91,10 @@
         let savingAmountConvert = parseInt(savingAmount.innerText)
         savingAmount.innerText = getPercent
         console.log(savePercentConvert)
-        let remaineBalance = document.getElementById('remaineBalance')
-        let remaineBalanceConvert = parseInt(remaineBalance.innerText)
+        let remainBalance = document.getElementById('remainBalance')
+        let remainBalanceConvert = parseInt(remainBalance.innerText)
         let remain = incomeConvert - getPercent
-        remaineBalance.innerText = remain;
+        remainBalance.innerText = remain;
     })
 </script>
 
