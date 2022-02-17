@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Money Expense</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
 
     </style>
@@ -21,16 +22,19 @@
         </div>
         <div class="flex">
             <h2>Income</h2>
-            <label for="">Income: <input id="income" type="number" value="0"></label>
+            <label for="">Income: <input id="income" type="number" min="0" value="0" required></label>
             <h2>Expenses</h2>
-            <label for="">Food: <input id="food" type="number" value="0"></label>
-            <label for="">Rent: <input id="rent" type="number" value="0"></label>
-            <label for="">Etc. : <input id="etc" type="number" value="0"></label>
-            <small id="message">1.Please Give Positve Income<br>2.Please Give Expense less than Income</small>
+            <label for="">Food: <input id="food" type="number" min="0" value="0"></label>
+            <label for="">Rent: <input id="rent" type="number" min="0" value="0"></label>
+            <label for="">Etc. : <input id="etc" type="number" min="0" value="0"></label>
+            <small id="warnningOne">Negetive Number Unacceptable</small>
+            <small id="warnningTwo">Expense More than Income</small>
+            <!-- 2.Please Give Expense less than Income -->
             <button id="calculate">Calculate</button>
             <h3>Total Expenses: <span id="totalExpense">0</span></h3>
             <h3>Balance: <span id="balance">0</span></h3>
-            <label for="">Save: <input id="savePercent" type="number" value="0">%</label>
+            <label for="">Save: <input id="savePercent" type="number" min="0" value="0">%</label>
+            <small id="warnningThree">Insufficient Balance</small>
             <button id="save">Save</button>
             <h3>Saving Amount: <span id="savingAmount">0</span></h3>
             <h3>Remaining Balance: <span id="remainBalance">0</span></h3>
@@ -39,62 +43,64 @@
 </main>
 <script>
 
-    function parseDotValue(id) {
-        let idname = document.getElementById(id).parseInt().value
+
+    function parseDotValue(idv) {
+        let idnamev = document.getElementById(idv)
+        let idnameConvert = parseInt(idnamev.value)
+        return idnameConvert
     }
+    function parseDotInner(idi) {
+        let idname = document.getElementById(idi)
+        let idnameCon = parseInt(idname.innerText)
+        return idnameCon
+    }
+
     document.getElementById('calculate').addEventListener('click', function () {
-        //all input
-        let income = document.getElementById('income');
-        let incomeConvert = parseInt(income.value);
-        //parseAndValue('income')
-        let food = document.getElementById('food');
-        let foodConvert = parseInt(food.value);
-        //parseAndValue('food')
-        let rent = document.getElementById('rent');
-        let rentConvert = parseInt(rent.value);
-        //parseAndValue('rent')
-        let etc = document.getElementById('etc');
-        let etcConvert = parseInt(etc.value);
-        //parseAndValue('etc')
-        let expense = foodConvert + rentConvert + etcConvert;
-
-
-        //let expense = (parseAndValue('food')) + (parseAndValue('rent')) + (parseAndValue('etc'))
-        //update here
-        let totalExpense = document.getElementById('totalExpense');
-        let totalExpenseConvert = parseInt(totalExpense.innerText);
-
-
-        let balance = document.getElementById('balance')
-        let balanceConvert = parseInt(balance.innerText);
-        let expenseAfter = incomeConvert - expense;
-
-        if (incomeConvert > 0 && expense < expenseAfter) {
-            totalExpense.innerText = expense
-            balance.innerText = expenseAfter
-            document.getElementById('message').style.display = 'none'
-        } else {
-            document.getElementById('message').style.display = 'block'
-
+        let getIncome = parseDotValue('income');
+        let getFood = parseDotValue('food');
+        let getRent = parseDotValue('rent');
+        let getEtc = parseDotValue('etc');
+        let expenseTotal = getFood + getRent + getEtc;
+        let showTotal = parseDotInner('totalExpense');
+        let getBalance = parseDotInner('balance');
+        let balanceTotal = getIncome - expenseTotal;
+        if (0 < getIncome && 0 < getFood && 0 < getRent && 0 < getEtc) {
+            document.getElementById('warnningOne').style.display = 'block'
+        }
+        else {
+            document.getElementById('warnningOne').style.display = 'none'
+        }
+        if (expenseTotal < balanceTotal) {
+            let totalExpense = document.getElementById('totalExpense').innerText = expenseTotal;
+            let balance = document.getElementById('balance').innerText = balanceTotal;
+            console.log(totalExpense);
+        }
+        else {
+            document.getElementById('warnningTwo').style.display = 'block';
         }
 
     })
 
     document.getElementById('save').addEventListener('click', function () {
-        let income = document.getElementById('income')
-        let incomeConvert = parseInt(income.value)
-        let savePercent = document.getElementById('savePercent')
-        let savePercentConvert = parseInt(savePercent.value)
-        let getPercent = (incomeConvert * savePercentConvert) / 100
+        let getIncome = parseDotValue('income');
+        let getPercent = parseDotValue('savePercent');
+        let getPercentTotal = (getIncome * getPercent) / 100;
         //saving amount
-        let savingAmount = document.getElementById('savingAmount')
-        let savingAmountConvert = parseInt(savingAmount.innerText)
-        savingAmount.innerText = getPercent
-        console.log(savePercentConvert)
-        let remainBalance = document.getElementById('remainBalance')
-        let remainBalanceConvert = parseInt(remainBalance.innerText)
-        let remain = incomeConvert - getPercent
-        remainBalance.innerText = remain;
+        let showSaveAmount = parseDotInner('savingAmount');
+        console.log(getPercentTotal);
+        let showRemainBalance = parseDotInner('remainBalance');
+        let getBalance = parseDotInner('balance');
+        let remain = getBalance - getPercentTotal;
+
+        if (getPercentTotal < getBalance) {
+            document.getElementById('savingAmount').innerText = getPercentTotal
+            document.getElementById('remainBalance').innerText = remain
+            document.getElementById('warnningThree').style.display = 'none'
+        }
+        else {
+            document.getElementById('warnningThree').style.display = 'block'
+        }
+
     })
 </script>
 
