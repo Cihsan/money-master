@@ -64,20 +64,39 @@
         let showTotal = parseDotInner('totalExpense');
         let getBalance = parseDotInner('balance');
         let balanceTotal = getIncome - expenseTotal;
-        if (0 < getIncome && 0 < getFood && 0 < getRent && 0 < getEtc) {
-            document.getElementById('warnningOne').style.display = 'block'
-        }
-        else {
+
+        let totalExpense = document.getElementById('totalExpense')
+        totalExpense.innerText = expenseTotal;
+        let balance = document.getElementById('balance')
+        balance.innerText = balanceTotal;
+
+        //Validation Done
+        //(getIncome >0 && getFood >0 && getRent >0 && getEtc >0)
+        //(0 < getIncome && 0 < getFood && 0 < getRent && 0 < getEtc)
+        if (getIncome > 0 && getFood > 0 && getRent > 0 && getEtc > 0) {
             document.getElementById('warnningOne').style.display = 'none'
         }
-        if (expenseTotal < balanceTotal) {
-            let totalExpense = document.getElementById('totalExpense').innerText = expenseTotal;
-            let balance = document.getElementById('balance').innerText = balanceTotal;
-            console.log(totalExpense);
-        }
         else {
-            document.getElementById('warnningTwo').style.display = 'block';
+            document.getElementById('warnningOne').style.display = 'block'
         }
+
+        // if (expenseTotal < balanceTotal) {
+        //     let totalExpense = document.getElementById('totalExpense')
+        //     totalExpense.innerText = expenseTotal;
+        //     let balance = document.getElementById('balance')
+        //     balance.innerText = balanceTotal;
+        //     console.log(totalExpense);
+        // }
+        // else {
+        //     document.getElementById('warnningTwo').style.display = 'block';
+        // }
+
+        // if (0 < getIncome && 0 < getFood && 0 < getRent && 0 < getEtc) {
+        //     document.getElementById('warnningOne').style.display = 'block'
+        // }
+        // else {
+        //     document.getElementById('warnningOne').style.display = 'none'
+        // }
 
     })
 
@@ -90,11 +109,13 @@
         console.log(getPercentTotal);
         let showRemainBalance = parseDotInner('remainBalance');
         let getBalance = parseDotInner('balance');
-        let remain = getBalance - getPercentTotal;
+        let remainTotal = getBalance - getPercentTotal;
 
         if (getPercentTotal < getBalance) {
-            document.getElementById('savingAmount').innerText = getPercentTotal
-            document.getElementById('remainBalance').innerText = remain
+            let saveAmountshow = document.getElementById('savingAmount')
+            saveAmountshow.innerText = getPercentTotal
+            let remainBalanceShow = document.getElementById('remainBalance')
+            remainBalanceShow.innerText = remainTotal
             document.getElementById('warnningThree').style.display = 'none'
         }
         else {

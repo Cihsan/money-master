@@ -39,7 +39,7 @@ button{
     font-size: 20px;
     border-radius: 5px;
 }
-#message, #messageForMoreExpense, #message2{
+#warnningOne, #warnningTwo, #warnningThree{
     color: red;
     display: none;
     margin: 5px;
